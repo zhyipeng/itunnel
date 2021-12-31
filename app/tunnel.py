@@ -33,8 +33,10 @@ class Tunnel:
         self.sshtunnel.restart()
         logging.info(f'Tunnel {self.conf.name} restart.')
 
+    @property
     def is_active(self) -> bool:
         return self.sshtunnel.is_active
 
+    @property
     def is_alive(self) -> bool:
         return self.sshtunnel.tunnel_is_up[self.sshtunnel.local_bind_address]
