@@ -1,8 +1,9 @@
 import functools
+import os
 
 import rumps
 
-from app.config import load_config
+from app.config import load_config, CONFIG_FILE
 from app.tunnel import Tunnel
 
 configs = load_config()
@@ -29,8 +30,12 @@ for conf in configs:
 class App(rumps.App):
 
     def __init__(self):
-        super().__init__("iTunnel")
+        super().__init__("T")
         self.menu = ['Refresh'] + list(tunnels.keys())
+
+    @rumps.clicked('Preferences')
+    def preferences(self, _):
+        os.system(f'open {CONFIG_FILE.parent}')
 
     @rumps.clicked('Refresh')
     def refresh(self, _):
