@@ -1,4 +1,5 @@
 import logging
+import time
 
 from sshtunnel import SSHTunnelForwarder
 
@@ -30,8 +31,11 @@ class Tunnel:
         logging.info(f'Tunnel {self.conf.name} closed.')
 
     def restart(self):
-        self.sshtunnel.restart()
-        logging.info(f'Tunnel {self.conf.name} restart.')
+        self.stop()
+        time.sleep(1)
+        self.start()
+        # self.sshtunnel.restart()
+        # logging.info(f'Tunnel {self.conf.name} restart.')
 
     @property
     def is_active(self) -> bool:

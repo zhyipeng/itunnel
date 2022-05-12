@@ -32,7 +32,7 @@ for conf in configs:
 class App(rumps.App):
 
     def __init__(self):
-        super().__init__("🌐")
+        super().__init__('iTunnel', title="🌐")
         self.menu = ['⚙️Preferences', '🔄Refresh'] + list(tunnels.keys())
 
     @rumps.clicked('⚙️Preferences')
